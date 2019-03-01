@@ -32,11 +32,11 @@ elif [[ ${1:0:2} != ak && ${1:0:2} != ao ]];then
       echo $HELP && return
 
 elif [ ${1:0:2} = ao ] || [ ${1:0:2} = ak ];then 
-   ps -ax | grep $1 | grep dash | while read PID a b c d; do  
-   kill ${PID}
-   done
-   echo Killed $1 dash && return
-   exit
+    ps -ef | grep remote | grep $1 | while read PID b c d e PTS f g h; do
+    pkill -t ${PTS}
+    done
+    echo Killed $1 dash && return
+    exit
 fi
 }
 
@@ -52,7 +52,7 @@ elif [[ ${1:0:2} != ak && ${1:0:2} != ao ]];then
       echo $HELP && return
 
 elif [ ${1:0:2} = ao ] || [ ${1:0:2} = ak ];then 
-   ps -ax | grep $1 | grep rviz | while read PID PID a b c d; do  
+   ps -ax | grep $1 | grep rviz | while read PID a b c d; do  
    kill ${PID}
    done
    echo Killed $1 rviz && return
